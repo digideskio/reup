@@ -5,11 +5,11 @@ export default (cwd, compiler) => {
   var server = new WebpackDevServer(compiler, {
     // webpack-dev-server options
 
-    contentBase: cwd,
+    contentBase: __dirname +'/../',
     // or: contentBase: "http://localhost/",
 
     hot: true,
-    
+
     // Enable special support for Hot Module Replacement
     // Page is no longer updated, but a "webpackHotUpdate" message is send to the content
     // Use "webpack/hot/dev-server" as additional module in your entry point
