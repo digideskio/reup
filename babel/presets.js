@@ -1,7 +1,7 @@
 module.exports = {
-  presets: ['react', 'es2015'],
+  presets: [__dirname + '/../node_modules/babel-preset-react', __dirname + '/../node_modules/babel-preset-es2015'],
   plugins: [
-    'transform-class-properties',
-    'syntax-class-properties'
+    __dirname + '/../node_modules/babel-plugin-transform-class-properties',
+    __dirname + '/../node_modules/babel-plugin-syntax-class-properties'
   ]
 }

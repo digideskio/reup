@@ -24,7 +24,7 @@ module.exports = (directory, cwd, routes) => {
         {
           test: /\.jsx|.js$/,
           exclude: /node_modules/,
-          loader: 'babel-loader',
+          loader: `${directory}/node_modules/babel-loader`,
           query: require('../babel/presets')
         },
       ]
