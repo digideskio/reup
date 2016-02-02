@@ -7,4 +7,5 @@ let cwd = process.cwd()
 let routes = require(`${cwd}/routes`).default
 let routeList = routes.map(route => route.component)
 let compiler = require('../webpack/build.js').default
-compiler(cwd, routeList)
+let server = require('../webpack/server.js').default
+compiler(cwd, routeList, server)

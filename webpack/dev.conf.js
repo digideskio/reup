@@ -4,16 +4,23 @@ var webpack = require('webpack')
 module.exports = (directory, cwd, routes) => {
   return {
     entry: {
-      main: `${directory}/render/client.jsx`,
+      App: [
+        `${directory}/node_modules/webpack-dev-server/client?http://localhost:8080`,
+        `${directory}/node_modules/webpack/hot/only-dev-server`,
+        `${directory}/render/client.jsx`,
+      ]
     },
     output: {
-      path: `./public/js`,
-      filename: '[name].js',
-      chunkFilename: '[id].js',
-      publicPath: '/assets/js/'
+      path: `${cwd}/public/js/`,
+      filename: 'bundle.js',
+      publicPath: 'http://localhost:8080/assets/'
     },
     module: {
       loaders: [
+        { test: /\.jsx?$/, 
+          loaders: ['react-hot'], 
+          include: __dirname + '/src' 
+        },
         {
           test: /\.jsx|.js$/,
           exclude: /node_modules/,
@@ -29,7 +36,9 @@ module.exports = (directory, cwd, routes) => {
       new webpack.DefinePlugin({
         "ROUTES": JSON.stringify(routes),
         "CWD": JSON.stringify(cwd)
-      })
+      }),
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoErrorsPlugin()
     ]
   }
 }
