@@ -1,8 +1,8 @@
 var webpack = require("webpack");
 
-export default (cwd, routeList, server) => {
+export default (cwd, server) => {
   var config = require('../webpack/dev.conf')
-  var compiler = webpack(config(`${__dirname}/../`, cwd, routeList));
+  var compiler = webpack(config(`${__dirname}/../`, cwd));
 
   // compiler.watch({ // watch options:
   //     aggregateTimeout: 300, // wait so long for more changes

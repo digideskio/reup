@@ -3,9 +3,6 @@
 require('babel-register')(require('../babel/presets'))
 
 let cwd = process.cwd()
-
-let routes = require(`${cwd}/routes`).default
-let routeList = routes.map(route => route.component)
 let compiler = require('../webpack/build.js').default
 let server = require('../webpack/server.js').default
-compiler(cwd, routeList, server)
+compiler(cwd, server)

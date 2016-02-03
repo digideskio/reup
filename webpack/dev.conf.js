@@ -1,7 +1,6 @@
 var webpack = require('webpack')
 
-
-module.exports = (directory, cwd, routes) => {
+module.exports = (directory, cwd) => {
   return {
     entry: {
       App: [
@@ -34,7 +33,6 @@ module.exports = (directory, cwd, routes) => {
     },
     plugins: [
       new webpack.DefinePlugin({
-        "ROUTES": JSON.stringify(routes),
         "CWD": JSON.stringify(cwd)
       }),
       new webpack.HotModuleReplacementPlugin(),
